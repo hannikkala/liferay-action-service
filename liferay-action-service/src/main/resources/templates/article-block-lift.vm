@@ -1,0 +1,31 @@
+##
+## Web content templates are used to lay out the fields defined in a
+## web content structure.
+##
+## Please use the left panel to quickly add commonly used variables.
+## Autocomplete is also available and can be invoked by typing "$".
+##
+#set($blockStyle = "block-transparent")
+#if($Background && $Background.getData() != '')
+    #set($blockStyle = "block-$Background.getData()")
+#end
+<div class="article-related-material benecol-module $blockStyle block-section article-block">
+    #if($Title && $Title.getData() != '')
+        <h2 class="module-title">$Title.getData()</h2>
+    #end
+    <div class="module-content">
+        #if($Image && $Image.getData() != "")
+            <div class="image-holder" style="background-image: url('$Image.getData()'); background-position: center; background-repeat: no-repeat;">
+                ## <img src="$Image.getData()">
+            </div>
+        #end
+        <div class="content-holder">
+            $Content.getData()
+            #if($Link && $Link.LinkText.getData() != '')
+                <p class="link-holder $Link.Alignment.getData()">
+                    <a href="$Link.getData()" class="btn btn-primary">$Link.LinkText.getData()</a>
+                </p>
+            #end
+        </div>
+    </div>
+</div>

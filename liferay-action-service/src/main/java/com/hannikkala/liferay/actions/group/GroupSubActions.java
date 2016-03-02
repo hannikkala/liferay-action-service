@@ -5,7 +5,7 @@ import com.hannikkala.liferay.actions.ddmstructure.DDMStructureAction;
 import com.hannikkala.liferay.actions.ddmtemplate.DDMTemplateAction;
 
 /**
- * User: bleed
+ * @author Tommi Hännikkälä <tommi@hannikkala.com>
  * Date: 23/02/16
  * Time: 16:26
  */

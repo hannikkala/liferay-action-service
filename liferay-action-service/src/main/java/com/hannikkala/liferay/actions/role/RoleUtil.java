@@ -16,7 +16,7 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * User: bleed
+ * @author Tommi Hännikkälä <tommi@hannikkala.com>
  * Date: 26/02/16
  * Time: 21:43
  */

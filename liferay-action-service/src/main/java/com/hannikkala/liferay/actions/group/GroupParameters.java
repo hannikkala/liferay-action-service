@@ -10,7 +10,7 @@ import com.liferay.portal.service.CompanyLocalServiceUtil;
 import com.liferay.portal.service.UserLocalServiceUtil;
 
 /**
- * User: bleed
+ * @author Tommi Hännikkälä <tommi@hannikkala.com>
  * Date: 23/02/16
  * Time: 15:24
  */

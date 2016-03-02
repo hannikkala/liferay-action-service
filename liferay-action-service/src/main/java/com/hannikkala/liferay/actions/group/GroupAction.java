@@ -3,7 +3,7 @@ package com.hannikkala.liferay.actions.group;
 import com.liferay.portal.model.Group;
 
 /**
- * User: bleed
+ * @author Tommi Hännikkälä <tommi@hannikkala.com>
  * Date: 23/02/16
  * Time: 16:23
  */

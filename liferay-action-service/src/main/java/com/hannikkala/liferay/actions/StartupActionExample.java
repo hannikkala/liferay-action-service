@@ -8,7 +8,7 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 import java.util.Locale;
 
 /**
- * User: bleed
+ * @author Tommi Hännikkälä <tommi@hannikkala.com>
  * Date: 23/02/16
  * Time: 23:36
  */
@@ -50,13 +50,6 @@ public class StartupActionExample extends SimpleAction {
                             map.put("article-block-lift.vm", "article-block-lift.xml");
                             map.put("article-block-lift-img-left.vm", "article-block-lift.xml");
                             map.put("article-block-lift-img-right.vm", "article-block-lift.xml");
-                            map.put("benecol-ie-main-header.vm", "benecol-ie-main-header.xml");
-                            map.put("benecol-ie-mediafile-video-lift.vm", "benecol-ie-mediafile-video-lift.xml");
-                            map.put("benecol-ie-product.vm", "benecol-ie-product.xml");
-                            map.put("benecol-ie-recipe.vm", "benecol-ie-recipe.xml");
-                            map.put("benecol-ie-video-lift.vm", "benecol-ie-video-lift.xml");
-                            map.put("benecol-ie-webcontent.vm", "benecol-ie-webcontent.xml");
-
                         })
                     .createAll();
         LiferayActionService.role("My Role").create();

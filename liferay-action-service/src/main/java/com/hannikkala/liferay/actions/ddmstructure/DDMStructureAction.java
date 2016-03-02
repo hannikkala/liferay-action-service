@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 /**
- * User: bleed
+ * @author Tommi Hännikkälä <tommi@hannikkala.com>
  * Date: 23/02/16
  * Time: 17:42
  */

@@ -27,7 +27,7 @@ public class StartupActionExample extends SimpleAction {
                     .withFriendlyUrl("/testsite")
                     .create()
                     .structure()
-                        .withDirectory("structures")
+                        .withDirectory("src/main/resources/structures")
                         .buildDescriptionMap("article-block-lift.xml", (descrMap) -> {
                             descrMap.put(Locale.US, "Article Block Lift");
                             descrMap.put(fi_FI, "Artikkelipalikan nosto");
@@ -38,7 +38,7 @@ public class StartupActionExample extends SimpleAction {
                         })
                         .createAll()
                     .template()
-                        .withDirectory("templates")
+                        .withDirectory("src/main/resources/templates")
                         .buildNameMap("article-block-lift.vm", (nameMap) -> {
                             nameMap.put(Locale.US, "Article Block Lift");
                             nameMap.put(fi_FI, "Artikkelipalikan nosto");

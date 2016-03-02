@@ -8,6 +8,13 @@
     <packaging>maven-plugin</packaging>
     <name>timestamp Maven Mojo</name>
     <url>http://maven.apache.org</url>
+
+    <parent>
+        <groupId>com.hannikkala.liferay</groupId>
+        <artifactId>liferay-action-service-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.maven</groupId>

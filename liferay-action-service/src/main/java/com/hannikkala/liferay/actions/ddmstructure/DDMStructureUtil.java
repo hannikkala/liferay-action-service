@@ -64,13 +64,16 @@ public class DDMStructureUtil {
                     structureClassNameId, ddmStructureKey, nameMap,
                     descriptionMap, xsd, "xml",
                     DDMStructureConstants.TYPE_DEFAULT, serviceContext);
-        } else if (params.getLastUpdated().after(ddmStructure.getModifiedDate())) {
+        } else if (params.getLastUpdated().after(ddmStructure.getModifiedDate()) && LiferayActionService.isUpdateMode()) {
             _log.info("Updating " + nameMap.values() + " structure");
             ddmStructure.setXsd(xsd);
             return DDMStructureLocalServiceUtil.updateStructure(
                     ddmStructure.getStructureId(),
                     DDMStructureConstants.DEFAULT_PARENT_STRUCTURE_ID, nameMap,
                     descriptionMap, xsd, serviceContext);
+        } else if (!LiferayActionService.isUpdateMode()) {
+            _log.info("Update mode is not on, not updating structure " + nameMap.values());
+            return ddmStructure;
         }
 
         _log.info("Structure " + nameMap.values() + " has newer version in Liferay. Not updating.");

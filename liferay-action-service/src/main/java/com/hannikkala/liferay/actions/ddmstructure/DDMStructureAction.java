@@ -2,6 +2,7 @@ package com.hannikkala.liferay.actions.ddmstructure;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.hannikkala.liferay.actions.LiferayActionService;
 import com.hannikkala.liferay.actions.group.GroupSubActions;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -57,8 +58,34 @@ public class DDMStructureAction {
         return this;
     }
 
+    /**
+     * Use name with all allowed locales.
+     * @param filename
+     * @param name
+     * @return
+     */
+    public DDMStructureAction withName(String filename, String name) {
+        LiferayActionService.getLocales().forEach(locale -> {
+            this.params.getNameMap(filename).put(locale, name);
+        });
+        return this;
+    }
+
     public DDMStructureAction buildNameMap(String filename, Consumer<Map<Locale, String>> func) {
         func.accept(this.params.getNameMap(filename));
+        return this;
+    }
+
+    /**
+     * Use description with all allowed locales.
+     * @param filename
+     * @param description
+     * @return
+     */
+    public DDMStructureAction withDescription(String filename, String description) {
+        LiferayActionService.getLocales().forEach(locale -> {
+            this.params.getDescriptionMap(filename).put(locale, description);
+        });
         return this;
     }
 

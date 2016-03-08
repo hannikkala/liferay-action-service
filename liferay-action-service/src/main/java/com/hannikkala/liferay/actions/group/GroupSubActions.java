@@ -1,5 +1,6 @@
 package com.hannikkala.liferay.actions.group;
 
+import com.hannikkala.liferay.actions.layout.LayoutAction;
 import com.liferay.portal.model.Group;
 import com.hannikkala.liferay.actions.ddmstructure.DDMStructureAction;
 import com.hannikkala.liferay.actions.ddmtemplate.DDMTemplateAction;
@@ -25,6 +26,10 @@ public class GroupSubActions {
 
     public DDMTemplateAction template() {
         return new DDMTemplateAction(this.group, this);
+    }
+
+    public LayoutAction page() {
+        return new LayoutAction(this.group, this);
     }
 
     public GroupAction end() {

@@ -59,13 +59,16 @@ public class DDMTemplateUtil {
                     templateKey, nameMap, descriptionMap,
                     DDMTemplateConstants.TEMPLATE_TYPE_DISPLAY, null, type,
                     script, true, false, null, null, serviceContext);
-        } else if (params.getLastUpdated().after(ddmTemplate.getModifiedDate())) {
+        } else if (params.getLastUpdated().after(ddmTemplate.getModifiedDate()) && LiferayActionService.isUpdateMode()) {
             _log.info("Updating " + nameMap.values() + " template");
             return DDMTemplateLocalServiceUtil.updateTemplate(
                     ddmTemplate.getTemplateId(), structureId,
                     nameMap, descriptionMap,
                     DDMTemplateConstants.TEMPLATE_TYPE_DISPLAY, null, type,
                     script, true, false, null, null, serviceContext);
+        } else if (!LiferayActionService.isUpdateMode()) {
+            _log.info("Update mode is not on, not updating template " + nameMap.values());
+            return ddmTemplate;
         }
 
         _log.info("Template " + nameMap.values() + " has newer version in Liferay. Not updating.");

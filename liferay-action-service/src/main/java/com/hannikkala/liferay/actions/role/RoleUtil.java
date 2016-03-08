@@ -45,9 +45,12 @@ public class RoleUtil {
         if(role == null) {
             _log.info("Add role '" + params.getName() + "'");
             return RoleLocalServiceUtil.addRole(userId, Role.class.getName(), classNameId, params.getName(), titleMap, descriptionMap, RoleConstants.TYPE_REGULAR, null, null);
-        } else {
+        } else if (LiferayActionService.isUpdateMode()) {
             _log.info("Updating role '" + params.getName() + "'");
             return RoleLocalServiceUtil.updateRole(role.getRoleId(), params.getName(), params.getTitleMap(), params.getDescriptionMap(), role.getSubtype(), null);
+        } else {
+            _log.info("Update mode is not on, not updating role " + params.getName());
+            return role;
         }
     }
 }

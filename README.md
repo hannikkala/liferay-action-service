@@ -44,7 +44,9 @@ public class StartupActionExample extends SimpleAction {
                 .withName("Test")
                 .withDescription("Test description")
                 .withFriendlyUrl("/testsite") // Required. Use only the last part with preceeding slash.
-                .create() // This gives you actions to create structures and templates on created site.
+                .create() // This gives you actions to create structures, templates and pages on created site.
+                
+                // Structure action
                 .structure() // Create structures from classpath relative directory "structures". Files with .xml extension are noticed.
                     .withDirectory("structures")
                     .buildDescriptionMap("article-block-lift.xml", (descrMap) -> { // Give human readable name(s) to the structure
@@ -54,6 +56,8 @@ public class StartupActionExample extends SimpleAction {
                         nameMap.put(Locale.US, "Article Block Lift");
                     })
                     .createAll() // Create all structures in directory to "/testsite"
+                    
+                // Template action
                 .template() // Create structures from classpath relative directory "templates". Files with .vm and .ftl extensions are noticed.
                     .withDirectory("templates")
                     .buildNameMap("article-block-lift.vm", (nameMap) -> { // Give names
@@ -68,7 +72,29 @@ public class StartupActionExample extends SimpleAction {
                         map.put("article-block-lift-img-right.vm", "article-block-lift.xml");
                     })
                     .createAll(); // Create all templates to group "/testsite"
-
+                    
+                // Page hierarchy
+                .page()
+                    .template1Column()
+                    .buildNameMap((map) -> { // Either build name, description and friendly url map
+                        map.put(Locale.US, "Test page");
+                        map.put(fi_FI, "Testisivu");
+                    })
+                    .buildFriendlyUrlMap((map) -> {
+                        map.put(Locale.US, "/testpage");
+                        map.put(fi_FI, "/testisivu");
+                    }).createAndSubAction() // Create page and start creating child objects.
+                    .page()
+                        .template2Column3070()
+                        .withName("Test sub page") // Or use convenience methods if you have only one locale.
+                        .withFriendlyUrl("/testsubpage")
+                        .createAndNext() // Create page and start creating siblings
+                    .page()
+                        .template1Column()
+                        .withName("Test sub page sibling")
+                        .withFriendlyUrl("/testsibling")
+                        .createAndEnd()
+                        
         // Utility allows to create roles
         role("My Role").create();
     }

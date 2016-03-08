@@ -2,7 +2,13 @@
 
 Does it bug you that when you're starting a project with Liferay, it requires lots of work to get Sites, Roles etc up and running? Here's the solution. A simple utility to hide all Liferay API madness and gives an imperative way to define the structure.
 
-Utility can be ran as Liferay hook. Now it supports creating sites, structures, templates and roles.
+Utility can be ran as Liferay hook. Now it supports creating sites, structures, templates, pages and roles.
+
+### TODO
+
+- [x] ~~Pages/Layouts~~
+- [ ] Theme selection
+- [ ] Adding portlets
 
 > Note! This utility requires Java8.
 
@@ -78,11 +84,9 @@ public class StartupActionExample extends SimpleAction {
                     .template1Column()
                     .buildNameMap((map) -> { // Either build name, description and friendly url map
                         map.put(Locale.US, "Test page");
-                        map.put(fi_FI, "Testisivu");
                     })
                     .buildFriendlyUrlMap((map) -> {
                         map.put(Locale.US, "/testpage");
-                        map.put(fi_FI, "/testisivu");
                     }).createAndSubAction() // Create page and start creating child objects.
                     .page()
                         .template2Column3070()

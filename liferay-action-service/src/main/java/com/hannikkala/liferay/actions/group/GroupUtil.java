@@ -5,7 +5,9 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.model.Group;
+import com.liferay.portal.model.LayoutSet;
 import com.liferay.portal.service.GroupLocalServiceUtil;
+import com.liferay.portal.service.LayoutSetLocalServiceUtil;
 import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.util.PortalUtil;
 
@@ -42,9 +44,13 @@ public class GroupUtil {
             serviceContext.setAddGroupPermissions(true);
             serviceContext.setAddGuestPermissions(true);
             _log.info("Creating group.");
-            return GroupLocalServiceUtil.addGroup(defaultUserId, parentGroupId, Group.class.getName(), 0,
+            group = GroupLocalServiceUtil.addGroup(defaultUserId, parentGroupId, Group.class.getName(), 0,
                     liveGroupId, name, description, type, manualMembership, membershipRestriction, friendlyUrl,
                     site, active, serviceContext);
+
+            LayoutSetLocalServiceUtil.updateLookAndFeel(group.getGroupId(), params.getThemeId(), "", "", false);
+
+            return group;
         } catch (PortalException e) {
             throw new RuntimeException(e);
         } catch (SystemException e) {

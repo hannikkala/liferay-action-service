@@ -26,6 +26,7 @@ public class GroupParameters {
     private int membershipRestriction = GroupConstants.DEFAULT_MEMBERSHIP_RESTRICTION;
     private boolean site = true;
     private boolean active = true;
+    private String themeId;
 
     public GroupParameters() {
         try {
@@ -128,5 +129,13 @@ public class GroupParameters {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public String getThemeId() {
+        return themeId;
+    }
+
+    public void setThemeId(String themeId) {
+        this.themeId = themeId;
     }
 }

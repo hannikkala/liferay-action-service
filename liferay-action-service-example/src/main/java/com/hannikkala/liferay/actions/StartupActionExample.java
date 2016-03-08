@@ -26,6 +26,7 @@ public class StartupActionExample extends SimpleAction {
                 .withName("Test")
                 .withDescription("Test description")
                 .withFriendlyUrl("/testsite")
+                .withTheme("profibusiness_WAR_profibusinesstheme")
                 .create()
                 .structure()
                     .withDirectory("structures")

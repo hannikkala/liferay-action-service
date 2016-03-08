@@ -7,7 +7,7 @@ Utility can be ran as Liferay hook. Now it supports creating sites, structures, 
 ### TODO
 
 - [x] ~~Pages/Layouts~~
-- [ ] Theme selection
+- [x] ~~Theme selection~~
 - [ ] Adding portlets
 
 > Note! This utility requires Java8.
@@ -50,6 +50,7 @@ public class StartupActionExample extends SimpleAction {
                 .withName("Test")
                 .withDescription("Test description")
                 .withFriendlyUrl("/testsite") // Required. Use only the last part with preceeding slash.
+                .withTheme("profibusiness_WAR_profibusinesstheme") // Sets installed theme (profit-business-theme from Marketplace)
                 .create() // This gives you actions to create structures, templates and pages on created site.
                 
                 // Structure action

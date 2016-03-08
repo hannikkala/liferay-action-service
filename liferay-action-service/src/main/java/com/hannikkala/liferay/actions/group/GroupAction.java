@@ -35,8 +35,23 @@ public class GroupAction {
         return this;
     }
 
+    /**
+     * Add description for group to be created.
+     * @param description
+     * @return
+     */
     public GroupAction withDescription(String description) {
         this.params.setDescription(description);
+        return this;
+    }
+
+    /**
+     * Sets theme id for group. If you use theme from custom WAR, set value to themeid_WAR_warname.
+     * @param themeId
+     * @return
+     */
+    public GroupAction withTheme(String themeId) {
+        this.params.setThemeId(themeId);
         return this;
     }
 
